@@ -3,9 +3,9 @@ import json
 import tempfile
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.document_loaders import PyPDFLoader, CSVLoader, TextLoader
+from langchain_community.document_loaders import PyPDFLoader, CSVLoader, TextLoader
 from langchain.chains import RetrievalQA
 from dotenv import load_dotenv
 
