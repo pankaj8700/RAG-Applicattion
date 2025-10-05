@@ -3,7 +3,7 @@ import json
 import tempfile
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader, CSVLoader, TextLoader
 from langchain.chains import RetrievalQA
@@ -56,8 +56,7 @@ def ask_question(query, k=3):
     )
 
     qa = RetrievalQA.from_chain_type(llm=llm, retriever=retriever)
-    result = qa({"query": query})
-
+    result = qa.invoke({"query": query})  # Use .invoke instead of __call__
     answer = result["result"]
     sources = result.get("source_documents", [])
 
