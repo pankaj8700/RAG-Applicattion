@@ -36,6 +36,7 @@ def process_files(files, chunk_size=1000, chunk_overlap=100):
         else:
             continue
         docs.extend(loader.load())
+        os.remove(tmp_path) 
 
     # Chunking
     splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
